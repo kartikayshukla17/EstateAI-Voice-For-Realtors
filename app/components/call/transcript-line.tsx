@@ -11,7 +11,7 @@ export function TranscriptLineRow({ line }: { line: TranscriptLineType }) {
         className="font-mono text-xs uppercase tracking-wide"
         style={{ color: "var(--color-text-faint)" }}
       >
-        {isAgent ? "Riya (agent)" : "Caller"} · {line.language}
+        {isAgent ? "Vera (agent)" : "Caller"} · {line.language}
       </span>
       <p
         className="max-w-[85%] rounded-lg px-3 py-2 text-sm"

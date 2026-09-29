@@ -24,7 +24,7 @@ export default function Home() {
           in Hindi and English, at the same time.
         </h1>
         <p className="mt-4 text-lg" style={{ color: "var(--color-text-dim)" }}>
-          Click through and have a real, live conversation with Riya. She
+          Click through and have a real, live conversation with Vera. She
           code-switches naturally, handles interruptions, and knows exactly
           when to hand off to a human.
         </p>

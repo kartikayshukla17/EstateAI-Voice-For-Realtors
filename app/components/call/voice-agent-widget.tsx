@@ -104,7 +104,7 @@ export function VoiceAgentWidget({
       {state === "idle" && (
         <div className="flex flex-col items-start gap-3">
           <p className="text-sm" style={{ color: "var(--color-text-dim)" }}>
-            Click to start a real, live conversation with Riya, the Sunridge
+            Click to start a real, live conversation with Vera, the Sunridge
             Parkview qualifying agent — Hindi/English code-switching and
             interruption handling included.
           </p>

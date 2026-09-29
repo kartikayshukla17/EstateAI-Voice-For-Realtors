@@ -1,7 +1,4 @@
 /**
- * Ported verbatim from lead-assistant/src/config/qualify.ts — keep in sync if
- * the qualification rule ever changes there.
- *
  * Qualified-lead rule: a lead is qualified iff budget >= Rs 45,00,000 AND
  * timeline <= 6 months. A missing or non-numeric value means "not qualified".
  */

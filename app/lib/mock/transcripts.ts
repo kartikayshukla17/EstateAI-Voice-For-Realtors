@@ -15,7 +15,7 @@ function line(
 export const TRANSCRIPT_BOOKED: TranscriptLine[] = [
   line(
     "agent",
-    "Hi, this is Riya, an automated assistant for the Sunridge Parkview sales team. Quick note — this chat may be recorded and your details shared with our team to set up a visit. How can I help?",
+    "Hi, this is Vera, an automated assistant for the Sunridge Parkview sales team. Quick note — this chat may be recorded and your details shared with our team to set up a visit. How can I help?",
     "english",
     0,
   ),
@@ -46,7 +46,7 @@ export const TRANSCRIPT_BOOKED: TranscriptLine[] = [
 export const TRANSCRIPT_BOOKED_EN: TranscriptLine[] = [
   line(
     "agent",
-    "Hi, this is Riya, an automated assistant for the Sunridge Parkview sales team. Quick note — this chat may be recorded and your details shared with our team to set up a visit. How can I help?",
+    "Hi, this is Vera, an automated assistant for the Sunridge Parkview sales team. Quick note — this chat may be recorded and your details shared with our team to set up a visit. How can I help?",
     "english",
     0,
   ),
@@ -77,7 +77,7 @@ export const TRANSCRIPT_BOOKED_EN: TranscriptLine[] = [
 export const TRANSCRIPT_HANDOFF: TranscriptLine[] = [
   line(
     "agent",
-    "Hi, this is Riya, an automated assistant for the Sunridge Parkview sales team. Quick note — this chat may be recorded and your details shared with our team to set up a visit. How can I help?",
+    "Hi, this is Vera, an automated assistant for the Sunridge Parkview sales team. Quick note — this chat may be recorded and your details shared with our team to set up a visit. How can I help?",
     "english",
     0,
   ),
@@ -107,7 +107,7 @@ export const TRANSCRIPT_HANDOFF: TranscriptLine[] = [
 export const TRANSCRIPT_ABANDONED: TranscriptLine[] = [
   line(
     "agent",
-    "Hi, this is Riya, an automated assistant for the Sunridge Parkview sales team. Quick note — this chat may be recorded and your details shared with our team to set up a visit. How can I help?",
+    "Hi, this is Vera, an automated assistant for the Sunridge Parkview sales team. Quick note — this chat may be recorded and your details shared with our team to set up a visit. How can I help?",
     "english",
     0,
   ),

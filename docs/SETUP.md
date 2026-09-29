@@ -9,11 +9,10 @@ git-ignored). Once `.env` is filled in, the code just reads from it.
 1. Sign up at [elevenlabs.io](https://elevenlabs.io) (free tier: 15 min/mo, 4
    concurrent calls).
 2. Go to **Conversational AI / Agents** in the dashboard → **Create an agent**.
-3. Paste the agent's brain from `../lead-assistant/docs/system-prompt.md`
-   (the "You are Riya..." body) into the agent's **System Prompt** field.
-4. Upload `../lead-assistant/docs/project-factsheet.md` as a **Knowledge Base**
-   document, so the agent can answer from real (fictional) facts instead of
-   guessing.
+3. Paste the agent's brain from `docs/system-prompt.md` (the "You are Vera..."
+   body) into the agent's **System Prompt** field.
+4. Upload `docs/project-factsheet.md` as a **Knowledge Base** document, so the
+   agent can answer from real (fictional) facts instead of guessing.
 5. Set the voice to one of ElevenLabs' stock multilingual voices (check it
    supports Hindi — most of their newer multilingual voices do; no need to use
    Voice Design for this).
