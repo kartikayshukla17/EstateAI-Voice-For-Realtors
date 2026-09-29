@@ -1,95 +1,121 @@
 # Design — EstateAI (home page)
 
-Locked design system for the home page redesign, studied from fin.ai's
-typography. Future Hallmark runs on this page read this file first.
-Scope note: this covers the **marketing home page** specifically — the
-app's data-dense surfaces (dashboard, call detail, scorecard) are out of
-scope and keep their existing IBM Plex system unless amended here later.
+Locked design system for the home page redesign, studied from fin.ai.
+Future Hallmark runs on this page read this file first. Scope note: this
+covers the **marketing home page** specifically — the app's data-dense
+surfaces (dashboard, call detail, scorecard) are out of scope and keep
+their existing IBM Plex system unless amended here later.
+
+**Correction record:** an earlier version of this file was built on a
+wrong reading — a computed-style paste that turned out to be from some
+other DOM node (white background, system-sans), not the actual visible
+page. The user caught this with real screenshots of the live site. This
+version is rebuilt from those screenshots (image-mode reading), which is
+ground truth for what's actually rendered — the earlier "confirmed via
+DevTools" claim was wrong precisely because the wrong element was
+inspected. Confirmed-from-devtools is not automatically more reliable
+than a screenshot if it's the wrong node.
 
 ## System
-- Genre · modern-minimal
-- Macrostructure · Marquee Hero, with a deliberate deviation: the strict
-  archetype specifies no subhead/no CTA in the fold, but EstateAI's hero
-  keeps both — a recruiter skimming this needs the value clear in seconds,
-  not after a blind scroll. fin.ai's own hero also pairs a headline with
-  dual CTAs, so the pure "typography only" reading doesn't even match the
-  source faithfully. Hero fills the fold; a 3-card grid follows below.
-- Theme · studied-DNA (source: url, https://fin.ai/)
-- Axes · light paper / grotesk-sans display / warm accent
+- Genre · **atmospheric** (dark canvas, warm radial blooms, serif display)
+  — corrected from the earlier "modern-minimal" call, which was built on
+  the wrong background reading.
+- Closest catalog cousin · **Lumen** — the one atmospheric theme with a
+  serif display + mono technical eyebrow (Modal / Anthropic / Together /
+  ElevenLabs register). fin.ai's real hero (dark ground, warm amber/coral
+  blooms, roman serif headline, tracked uppercase labels) matches this
+  register closely. Still building as studied-DNA, not the catalog theme
+  directly — this is a reference point, not the source of tokens.
+- Macrostructure · centred atmospheric hero (headline + subhead + dual CTA,
+  a small stat-badge row beneath) — the canvas itself is part of the
+  design, type sits on top of it. Below the fold: a simple feature section
+  (kept from EstateAI's own content, not fin.ai's 22-section structure —
+  theme drift, stated plainly, since EstateAI has 3 features not 22).
+- Axes · dark paper / roman editorial serif / warm accent (amber + a
+  secondary coral bloom)
 
 ## Provenance
-- Source: `https://fin.ai/`, read 2026-09-29.
+- Source: `https://fin.ai/`, read 2026-09-29. Mixed mode: an initial URL
+  fetch + a DevTools paste (both turned out to be misleading), corrected
+  by 5 real screenshots the user provided of the live homepage and
+  pricing page.
 - Attestation: public reference for EstateAI's own brand, not fin.ai's own
-  site — proceeding on that basis given the conversation context (fin.ai is
-  a well-known third-party company being used as design inspiration, not a
-  source being represented as EstateAI's own work). Flag if that's wrong.
-- Confidence: typography and background colour are **exact**, pasted
-  directly from fin.ai's DevTools Computed panel by the user (not a
-  WebFetch guess). Accent colour is **approximated** — visually apparent
-  on the source but no exact hex was captured. Macrostructure is a
-  **lower-confidence inference** from a page description, not DOM-level
-  extraction. Rhythm (density, pacing) is **unknown** — the standard
-  URL-mode blind spot; a fetch can't judge whether spacing reads generous
-  or templated.
+  site — proceeding on that basis given conversation context.
+- Confidence, per image-mode rules (name roles, not exact fonts, from a
+  screenshot):
+  - **High confidence, visually unambiguous:** dark near-black ground,
+    warm amber/orange radial blooms behind the hero, roman (non-italic)
+    serif display headline, uppercase tracked-out labels, pill-shaped
+    buttons, an orange-filled badge pill ("Includes Operator") as the one
+    clear accent-color sighting.
+  - **Font role, not exact name** (image mode can't reliably ID a
+    typeface): display is a roman editorial serif — candidates **Fraunces**
+    or **Newsreader** (both Google Fonts, both fit the visual weight seen).
+    Body/UI sans is a neutral grotesque — candidate **Inter**. Labels read
+    as mono or heavily-tracked uppercase sans — going with **IBM Plex
+    Mono**, which is also what EstateAI's existing system already uses
+    elsewhere, so this isn't a new family, just a confirmed continuation.
+  - **Rhythm:** now observable from the screenshots — generous vertical
+    spacing, centred hero, sections alternate between plain-dark and
+    bloom-lit rather than one flat background throughout the page.
 
 ## Tokens (canonical · `tokens.css` is the source of truth)
 ```css
 :root {
-  --color-paper:      oklch(100% 0 0);           /* confirmed: rgb(255,255,255) */
-  --color-paper-2:     oklch(97% 0.003 90);        /* estimated — subtle card lift off white */
-  --color-ink:         oklch(20% 0.01 260);        /* estimated — near-black, not captured exactly */
-  --color-ink-2:       oklch(45% 0.01 260);        /* estimated */
-  --color-rule:        oklch(90% 0.005 90);        /* estimated — hairline border */
-  --color-accent:      oklch(70% 0.15 45);         /* APPROXIMATED — warm coral/orange, no exact hex captured */
-  --color-accent-ink:  oklch(99% 0.005 90);
-  --color-focus:       oklch(70% 0.15 45);         /* reuses accent */
+  --color-paper:       oklch(14% 0.015 260);   /* near-black, cool-neutral base */
+  --color-paper-2:      oklch(19% 0.015 260);   /* elevated card surface */
+  --color-paper-3:      oklch(22% 0.016 260);   /* further-elevated (pricing-card equivalent) */
+  --color-ink:          oklch(96% 0.005 90);    /* nearly-white primary text */
+  --color-ink-2:        oklch(70% 0.01 260);    /* muted secondary text */
+  --color-accent:       oklch(72% 0.15 45);     /* warm amber/orange — the one accent seen (badge pill) */
+  --color-bloom-a:      oklch(75% 0.14 55 / 0.35);  /* amber bloom, hero background */
+  --color-bloom-b:      oklch(70% 0.12 20 / 0.22);  /* secondary coral/pink bloom — genre caps at one + one */
+  --color-accent-ink:   oklch(14% 0.02 45);
+  --color-focus:        oklch(78% 0.14 55);
 
-  --font-display: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* CONFIRMED — fin.ai's exact computed font-family */
-  --font-body:    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* CONFIRMED — same stack throughout, no second family found */
-  --font-mono:    "IBM Plex Mono", ui-monospace, monospace; /* kept from EstateAI's existing system, NOT part of the fin.ai DNA — fin.ai's own labels are uppercase sans, not mono (see Notes) */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;              /* role-matched candidate, not exact-confirmed */
+  --font-body:    "Inter", ui-sans-serif, system-ui, sans-serif;     /* role-matched candidate */
+  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;          /* continuation of EstateAI's existing system */
 
-  /* 4-pt spacing scale, named: --space-3xs … --space-4xl. */
-  /* Type scale, 1.25 (major-third) ratio: --text-xs … --text-display. */
+  /* 4-pt spacing scale: --space-3xs … --space-4xl. */
+  /* Type scale, 1.25 ratio: --text-xs … --text-display (display can hit 6rem per atmospheric genre allowance). */
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 180ms;  --dur-base: 240ms;  --dur-slow: 320ms;
 
-  --radius-card: 12px;   /* estimated */
-  --radius-pill: 999px;  /* estimated */
-  --radius-input: 8px;   /* estimated */
+  --radius-card: 16px;
+  --radius-pill: 999px;
 }
 ```
 
 ## CTA voice
-- Primary · filled accent · `--radius-pill` · generous horizontal padding
-- Secondary · plain text link, no border — fin.ai leans on restraint over a
-  visible ghost-button secondary action
+- Primary · filled accent, pill-radius, confident not pastel
+- Secondary · outline/ghost pill, same radius — both buttons visible
+  side-by-side in the real hero (dual CTA, not restraint-to-one — corrects
+  the earlier design.md's guess that fin.ai favors a single CTA)
 
 ## Motion stance
-- 2 reveal primitives: fade + slide-up per section, triggered by
-  `IntersectionObserver` as each section enters the viewport — the *feel*
-  of fin.ai's long-page progressive reveal, built with a standard technique
-  rather than a guessed-at reverse-engineering of their actual JS.
-- Reduced-motion fallback · ≤150ms opacity crossfade, no slide.
+- **Fade-in only. No slide, no bounce** — per atmospheric genre's own
+  rule; corrects the earlier fade+slide-up call, which was modern-minimal
+  voice, not atmospheric. The atmosphere does the work, not the motion.
+- Reduced-motion fallback · fade already ≤150ms-compatible, no change needed.
 
 ## Notes
-- **Anti-patterns to not carry over:** none confidently detected — this
-  read came from a URL fetch, not a live browser inspection, so script-level
-  anti-patterns (transition-all, hover-scale, bouncy easing) couldn't be
-  checked. Don't assume the absence of a flag here means the source is
-  clean — it means the signal wasn't available.
-- **Devanagari tradeoff:** switching from IBM Plex Sans Devanagari to this
-  system-font stack still renders Hindi text correctly (OS-level font
-  fallback covers Devanagari codepoints even though `system-ui` doesn't
-  name a Devanagari font explicitly), but loses the *intentional*
-  cross-script visual coherence IBM Plex was originally chosen for. Real
-  tradeoff, not a technical risk — worth revisiting if the redesign extends
-  past the home page into the live-call transcript view.
-- **Label treatment:** fin.ai's own numbered section labels (01–22) are
-  plain uppercase sans, not monospace — the redesigned home page follows
-  that (drops the `font-mono` eyebrow label EstateAI currently uses on the
-  hero) even though `--font-mono` stays defined for the app's data surfaces
-  elsewhere.
+- **Genre-specific rules now in force:** atmospheric explicitly bans
+  hairline-on-dark card borders (use elevated `paper-2`/`paper-3` surfaces
+  instead), bans glassmorphism, caps accent at one warm hue + one
+  secondary, and keeps display text roman (no italics — global rule
+  anyway). The previous version's white hairline-bordered cards violated
+  the corrected genre's own conventions, not just the color reading.
+- **Devanagari note still applies:** Fraunces has zero Devanagari coverage
+  (same issue as drillback's original type system) — if this direction
+  extends past the home page into any Hindi/English mixed content, the
+  display face needs reconsidering there specifically; the home page's
+  hero and card copy is English-only so it's not a problem on this page.
+- **Anti-patterns to not carry over:** none confidently flagged from the
+  screenshots — no bouncy hovers or obvious transition-all visible in
+  static captures, but static images can't reveal script-level behavior
+  either way.
 
 ## Exports
 `tokens.css` (in this project) is the source of truth. Ask "extend
