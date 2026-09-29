@@ -21,8 +21,15 @@ git-ignored). Once `.env` is filled in, the code just reads from it.
    - An **API key** (Profile → API Keys, if you don't have one yet)
 7. Enable the **Widget** embed option so it can run in-browser via WebRTC (no
    Twilio/PSTN needed for this project).
+8. Under **Settings → Webhooks** (workspace-level, not per-agent), add a
+   post-call webhook pointing at `<your deployed URL>/api/webhooks/post-call`
+   — ElevenLabs generates a **signing secret** when you create it. Since your
+   dev server isn't publicly reachable, this step needs either a deployed URL
+   (Vercel) or a tunnel tool like `ngrok` for local testing — not blocking
+   until you're ready to test the real voice widget end to end.
 
-→ Save as `ELEVENLABS_API_KEY` and `ELEVENLABS_AGENT_ID`.
+→ Save as `ELEVENLABS_API_KEY`, `ELEVENLABS_AGENT_ID`, and
+`ELEVENLABS_WEBHOOK_SECRET`.
 
 ## 2. Neon — Postgres database
 
@@ -75,6 +82,7 @@ openssl rand -base64 32
 # ElevenLabs
 ELEVENLABS_API_KEY=
 ELEVENLABS_AGENT_ID=
+ELEVENLABS_WEBHOOK_SECRET=
 
 # Neon Postgres
 DATABASE_URL=
@@ -91,9 +99,13 @@ BETTER_AUTH_SECRET=
 BETTER_AUTH_URL=http://localhost:5173
 ```
 
-## What to do once it's filled in
+## Status
 
-Tell me it's ready — I don't need to see the actual values. I'll write the
-Drizzle schema, the Better Auth config, the ElevenLabs widget wiring, and the
-Gemini scoring call all against these env var names, then we run it locally
-against your real accounts to verify end-to-end.
+- Neon, Gmail, and Better Auth secret: **done**, verified end-to-end (real
+  magic-link email sent, clicked, real session created).
+- Gemini: code is written (`app/lib/scoring/score-transcript.server.ts`,
+  `app/routes/api/webhooks/post-call.ts`) but needs `GEMINI_API_KEY` to
+  actually test a real scoring call.
+- ElevenLabs: agent setup in progress separately; `ELEVENLABS_WEBHOOK_SECRET`
+  only gets created once the webhook step (1.8 above) is set up, which needs
+  a reachable URL first.

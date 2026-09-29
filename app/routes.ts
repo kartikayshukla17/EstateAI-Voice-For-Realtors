@@ -2,6 +2,7 @@ import { type RouteConfig, route, index, layout } from "@react-router/dev/routes
 
 export default [
   route("api/auth/*", "routes/api/auth.ts"),
+  route("api/webhooks/post-call", "routes/api/webhooks/post-call.ts"),
 
   layout("routes/marketing/layout.tsx", [
     index("routes/marketing/home.tsx"),
