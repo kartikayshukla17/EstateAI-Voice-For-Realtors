@@ -1,15 +1,28 @@
 import { Form, useActionData } from "react-router";
 import { Card } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
+import { auth } from "~/lib/auth/auth.server";
 import type { Route } from "./+types/login";
 
 export async function action({ request }: Route.ActionArgs) {
   const formData = await request.formData();
-  const email = String(formData.get("email") ?? "");
-  // TODO(next increment): insert a verification_tokens row (identifier=email,
-  // a hashed token, ~15min expiry), send the link via Resend, and rate-limit
-  // by email+IP so the public demo can't be spammed into running up cost.
-  return { ok: true, email };
+  const email = String(formData.get("email") ?? "").trim();
+
+  if (!email || !email.includes("@")) {
+    return { ok: false as const, email, error: "Enter a valid email address." };
+  }
+
+  try {
+    await auth.api.signInMagicLink({
+      body: { email, callbackURL: "/login/verify" },
+      headers: request.headers,
+    });
+    return { ok: true as const, email };
+  } catch (error) {
+    // Most likely cause right now: GMAIL_USER/GMAIL_APP_PASSWORD not set yet.
+    const message = error instanceof Error ? error.message : "Something went wrong sending the link.";
+    return { ok: false as const, email, error: message };
+  }
 }
 
 export default function Login() {
@@ -37,10 +50,16 @@ export default function Login() {
                 type="email"
                 name="email"
                 required
+                defaultValue={actionData?.email ?? ""}
                 placeholder="you@example.com"
                 className="rounded-md border px-3 py-2 text-sm"
                 style={{ borderColor: "var(--color-line-strong)", background: "var(--color-bg-sunken)" }}
               />
+              {actionData && !actionData.ok && (
+                <p className="text-sm" style={{ color: "var(--color-handoff)" }}>
+                  {actionData.error}
+                </p>
+              )}
               <Button type="submit">Send me a magic link</Button>
             </Form>
           </>

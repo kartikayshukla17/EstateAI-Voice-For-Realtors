@@ -1,13 +1,16 @@
 import { Link } from "react-router";
 import { Card } from "~/components/ui/card";
+import { auth } from "~/lib/auth/auth.server";
 import type { Route } from "./+types/login-verify";
 
+// Better Auth's own handler (mounted at /api/auth/*) is what actually
+// processes the magic-link token and sets the session cookie — this route is
+// just the callbackURL it redirects to afterward, so by the time we're here
+// the session should already exist (or the link was bad/expired and it
+// doesn't).
 export async function loader({ request }: Route.LoaderArgs) {
-  const token = new URL(request.url).searchParams.get("token");
-  // TODO(next increment): verifyMagicLinkToken(token) against a real
-  // verification_tokens row (hash-compare, check expires_at/used_at), then
-  // mint a signed session cookie via session.server.ts and redirect to /demo.
-  return { verified: Boolean(token) };
+  const session = await auth.api.getSession({ headers: request.headers });
+  return { verified: Boolean(session) };
 }
 
 export default function LoginVerify({ loaderData }: Route.ComponentProps) {
