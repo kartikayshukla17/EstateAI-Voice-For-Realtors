@@ -1,0 +1,37 @@
+@theme {
+  /* ground — warm paper, trust-oriented (not a dark console; this is consumer-facing) */
+  --color-bg-0: oklch(97.5% 0.008 85);
+  --color-bg-1: oklch(94% 0.010 85);
+  --color-bg-2: oklch(90% 0.012 80);
+  --color-bg-sunken: oklch(99% 0.004 85);
+
+  --color-ink: oklch(99% 0.005 90); /* text placed on top of --color-accent */
+  --color-text: oklch(24% 0.020 265);
+  --color-text-dim: oklch(42% 0.020 265);
+  --color-text-faint: oklch(58% 0.016 265);
+
+  /* ONE sanctioned accent — CTA button, the live-speaking ring, active nav underline. Nowhere else. */
+  --color-accent: oklch(72% 0.16 55);
+
+  /* two more single-purpose semantic colors — never reused for anything else */
+  --color-handoff: oklch(64% 0.19 27); /* "escalating to human" state ONLY */
+  --color-qualified: oklch(64% 0.13 148); /* qualified-lead badge / good scorecard rows ONLY */
+
+  --color-edge: oklch(0% 0 0 / 0.07);
+  --color-line: oklch(0% 0 0 / 0.13);
+  --color-line-strong: oklch(0% 0 0 / 0.32);
+
+  --font-sans: "IBM Plex Sans Devanagari", "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+}
+
+:root {
+  --shadow-card: 0 1px 0 var(--color-edge) inset, 0 20px 48px -18px oklch(0% 0 0 / 0.18);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-btn: 6px;
+  --wrap: 1000px;
+  --gap: clamp(2rem, 5vw, 3.5rem);
+  --pad: clamp(1.25rem, 5vw, 3rem);
+}

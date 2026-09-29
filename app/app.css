@@ -1,0 +1,121 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+html,
+body {
+  background: var(--color-bg-0);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+.wrap {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+.card {
+  background: linear-gradient(180deg, var(--color-bg-2), var(--color-bg-1));
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-btn);
+  padding: 0.65rem 1.1rem;
+  font-weight: 500;
+  background: var(--color-accent);
+  color: var(--color-ink);
+  border: 1px solid transparent;
+  transition: background-color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+
+.btn:hover {
+  background: oklch(from var(--color-accent) calc(l - 0.05) c h);
+}
+
+.btn--sm {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.875rem;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-line-strong);
+}
+
+.btn--ghost:hover {
+  background: var(--color-bg-1);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem var(--pad);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.nav__mark {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.nav__link {
+  color: var(--color-text-dim);
+  font-size: 0.9rem;
+}
+
+.nav__link[aria-current="page"] {
+  color: var(--color-text);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 2px;
+}
+
+.nav__user {
+  color: var(--color-text-faint);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  border: 1px solid var(--color-line);
+  color: var(--color-text-dim);
+}
+
+.badge[data-tone="qualified"] {
+  color: var(--color-qualified);
+  border-color: color-mix(in oklch, var(--color-qualified) 40%, transparent);
+}
+
+.badge[data-tone="handoff"] {
+  color: var(--color-handoff);
+  border-color: color-mix(in oklch, var(--color-handoff) 40%, transparent);
+}
+
+.footer {
+  padding: 2rem var(--pad) 3rem;
+  color: var(--color-text-faint);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--color-line);
+}
